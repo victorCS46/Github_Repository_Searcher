@@ -1,52 +1,59 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom";
 import axios from 'axios';
 
-function Contributors(props) {
+const Contributors = () => {
+  // This component is getting props from useLocation Hook
+  const { state } = useLocation();
   const [repos, setRepos] = useState([]);
-  let [i, setI] = useState(10);
+  const [quantity, setQuantity] = useState(10);
 
-  const loadMore = (e) => {
-    e.preventDefault(e);
-    setI(i + 5);
-    if (i >= 25) {
+  const loadMore = () => {
+    setQuantity(quantity + 5);
+    if (quantity >= 25) 
       document.getElementById("contributor_load").style.display = "none";
-    }
-    console.log(i);
   }
 
   useEffect(() => {
-     const x = async () => {
-     const response = await axios.get(`${props.location.state.repo}`);
-     setRepos(response.data);
-    }
-    x();
-  },[i])
-
-  let y = repos.slice(0, i).map((item) =>
-    <center key={item.id}>
-      <div key={item.id} className="vcs-contributor_div">
-        <div>
-          <img className="vcs-con_img" src={item.avatar_url} alt="not found!!" />
-        </div>
-        <div className="vcs-con_name"><a href={item.html_url}>{item.login}</a></div>
-        <div className="vcs-con_name">({item.contributions} Contributions)</div>
-      </div>
-    </center>
-    );
+    (async () => {
+      const response = await axios.get(`${state.url}`);
+      setRepos(response.data);
+    })();
+  }, [state.url])
 
   return (
-    <div>
+    <>
       <div className="header">
         <h1>Hooks Test</h1>
         <span>Github repositories search bar</span>
       </div>
-      <div>{y}</div>
-      <center>
-        <form onSubmit={loadMore}> 
-          <button id="contributor_load" className="vcs-btn">Load more</button>
-        </form>
-      </center>
-    </div>
+      <div>
+      {
+        repos.slice(0, quantity).map((item) =>
+          <div key={item.id} className="vcs-contributor-div">
+            <div>
+              <img className="vcs-con-img" src={item.avatar_url} alt="not found!!" />
+            </div>
+            <div className="vcs-con-name">
+              <a href={item.html_url}>{item.login}</a>
+            </div>
+            <div className="vcs-con-name">({item.contributions} Contributions)</div>
+          </div>
+        )
+      }
+      </div>
+      <button 
+        id="contributor_load" 
+        className="vcs-btn" 
+        style={{
+          marginLeft: 'auto', 
+          marginRight: 'auto',
+        }}
+        onClick={loadMore}
+      >
+        Load more
+      </button>
+    </>
   );
 }
 export default Contributors;
