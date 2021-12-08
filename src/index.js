@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
-  <BrowserRouter>
+  <BrowserRouter basename="/Github_Repository_Searcher">
     <div>
       <ul className="App-routing">
         <span>
