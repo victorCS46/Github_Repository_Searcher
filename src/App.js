@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Card from './components/Card';
 import { Spinner } from 'react-bootstrap';
 import { github } from './api/github';
+import { Header } from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
 
@@ -56,17 +57,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div>
-        <div className="header">
-          <img 
-            id="react_icon" 
-            src="logo192.png" 
-            alt="React?" 
-          /> 
-          <h1>Github Repo Searcher</h1>
-          <span>Search any repository from github here</span>
-        </div>
-      </div>
+      <Header />
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 
