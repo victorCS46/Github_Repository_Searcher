@@ -16,7 +16,7 @@ const routing = (
         </span>
       </ul>
       <Routes>
-        <Route path="//*" element={<App />} />
+        <Route path="/" element={<App />} />
         <Route path="/contributors" element={<Contributors />} />
       </Routes>
     </div>
