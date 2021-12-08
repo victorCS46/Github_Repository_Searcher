@@ -33,6 +33,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/helper-builder-react-jsx": "^7.16.0",
+    "@babel/helper-define-map": "^7.16.0",
+    "@babel/helper-regex": "^7.10.5",
     "eslint-plugin-react-hooks": "^2.1.2"
   }
 }
