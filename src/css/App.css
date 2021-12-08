@@ -89,7 +89,6 @@ html {
   -moz-transition-duration: 0.8s;
   -o-transition-duration: 0.8s;
   transition-duration: 0.8s;
-
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
   -o-transition-property: -o-transform;
@@ -125,7 +124,6 @@ input{
   border: none;
   background: #404040;
   color: #ffffff !important;
-  font-weight: 100;
   font-size: 13px;
   padding: 16px 20px;
   text-transform: uppercase;
@@ -173,7 +171,6 @@ label{
   float: left;
   overflow: hidden;
   background-color: white;
-  margin-left: 24px;
 }
 
 .vcs-language{
@@ -208,7 +205,7 @@ label{
   padding-right: 10px;
 }
 
-.vcs-contributor{
+.vcs-contributor {
   background-color: #23619b;
   color: white;
   border: 0px solid #302f2f;
@@ -221,8 +218,9 @@ label{
 
 .vcs-contributor:hover{
   font-size: 16px !important;
+  color: white;
   transition: all 0.3s ease 0s;
-  letter-spacing: 1px;
+  background-color: #a7a7a7;
 }
 
 .vcs-description{
@@ -247,32 +245,41 @@ label{
 .vcs-repo:hover{
   font-size: 16px !important;
   transition: all 0.3s ease 0s;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
 }
 
-.vcs-a{
-  background-color: #000000;
+.vcs-a {
+  background-color: #3da51a;
   border-radius: 25px;
   color: white;
   padding-left: 10px;
   padding-right: 10px;
+  transition: all 0.3s ease 0s;
 }
 
-.vcs-contributor_div{
+.vcs-a:hover {
+  transition: all 0.3s ease 0s;
+  color: white;
+  background-color: #a7a7a7;
+}
+
+.vcs-contributor-div{
   float: none;
   border: 1px solid black;
   width: 250px;
   height: 50px;
   margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: azure;
   transition: all 0.5s ease 0s;
 }
 
-.vcs-con_name{
+.vcs-con-name{
   background-color: azure;
 }
 
-.vcs-con_img{
+.vcs-con-img{
   width: 50px;
   height: 100%;
   float: left;
