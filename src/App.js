@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import axios from 'axios';
 import Card from './components/Card';
 import { Spinner } from 'react-bootstrap';
+import { github } from './api/github';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
 
@@ -19,7 +19,7 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading({...isLoading, submit: true});
-    const response = await axios.get(`https://api.github.com/search/repositories`, {
+    const response = await github.get('/search/repositories', {
       params: {
         q: search,
         per_page: page.current,
@@ -41,7 +41,7 @@ const App = () => {
       page.current = 60;
       document.getElementById("load").style.display = "none";
     }
-    const response = await axios.get(`https://api.github.com/search/repositories`, {
+    const response = await github.get('/search/repositories', {
       params: {
         q: search,
         per_page: page.current,
